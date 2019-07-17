@@ -1,0 +1,52 @@
+<script>
+	export default {
+		onLaunch: function() {
+			console.log('App Launch')
+		},
+		onShow: function() {
+			console.log('App Show')
+		},
+		onHide: function() {
+			console.log('App Hide')
+		}
+	}
+</script>
+
+<style>
+	/* 字体图标 */
+	/*每个页面公共css */
+	 @font-face {
+		font-family: 'font_family';  /* project id 1065286 */
+		src: url('//at.alicdn.com/t/font_1065286_3bsye5aijur.eot');
+		src: url('//at.alicdn.com/t/font_1065286_3bsye5aijur.eot?#iefix') format('embedded-opentype'),
+		url('//at.alicdn.com/t/font_1065286_3bsye5aijur.woff2') format('woff2'),
+		url('//at.alicdn.com/t/font_1065286_3bsye5aijur.woff') format('woff'),
+		url('//at.alicdn.com/t/font_1065286_3bsye5aijur.ttf') format('truetype'),
+		url('//at.alicdn.com/t/font_1065286_3bsye5aijur.svg#font_family') format('svg');
+	  }
+	  .font_family{
+		font-family:"font_family" !important;
+		font-size:16px;font-style:normal;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-stroke-width: 0.2px;
+		-moz-osx-font-smoothing: grayscale;
+	  }
+	  /* 按钮去掉边框 */
+	  button::after {
+		border: none;
+	  }
+	  button{
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		line-height: 1;
+		color: #1c1c1c;
+		font-size: 28rpx;
+		background: none;
+	  }
+	  .button-hover {
+		color:#1c1c1c;
+		background:none;
+	  }
+</style>
