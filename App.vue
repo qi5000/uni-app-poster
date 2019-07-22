@@ -15,8 +15,8 @@
 <style>
 	/* 字体图标 */
 	/*每个页面公共css */
-	 @font-face {
-		font-family: 'font_family';  /* project id 1065286 */
+	/* @font-face {
+		font-family: 'font_family';  
 		src: url('//at.alicdn.com/t/font_1065286_3bsye5aijur.eot');
 		src: url('//at.alicdn.com/t/font_1065286_3bsye5aijur.eot?#iefix') format('embedded-opentype'),
 		url('//at.alicdn.com/t/font_1065286_3bsye5aijur.woff2') format('woff2'),
@@ -30,9 +30,9 @@
 		-webkit-font-smoothing: antialiased;
 		-webkit-text-stroke-width: 0.2px;
 		-moz-osx-font-smoothing: grayscale;
-	  }
+	  } */
 	  /* 按钮去掉边框 */
-	  button::after {
+	 /* button::after {
 		border: none;
 	  }
 	  button{
@@ -48,5 +48,5 @@
 	  .button-hover {
 		color:#1c1c1c;
 		background:none;
-	  }
+	  } */
 </style>

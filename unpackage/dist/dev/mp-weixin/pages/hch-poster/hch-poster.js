@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var hchPoster = function hchPoster() {return __webpack_require__.e(/*! import() | wxcomponents/hch-poster/hch-poster */ "wxcomponents/hch-poster/hch-poster").then(__webpack_require__.bind(null, /*! ../../wxcomponents/hch-poster/hch-poster.vue */ "E:\\uni-app\\poster\\wxcomponents\\hch-poster\\hch-poster.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var hchPoster = function hchPoster() {return __webpack_require__.e(/*! import() | wxcomponents/hch-poster/hch-poster */ "wxcomponents/hch-poster/hch-poster").then(__webpack_require__.bind(null, /*! ../../wxcomponents/hch-poster/hch-poster.vue */ "E:\\uni-app\\poster\\wxcomponents\\hch-poster\\hch-poster.vue"));};var _default =
 
 
 
@@ -59,6 +59,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
   methods: {
     createCanvasImageEvn: function createCanvasImageEvn() {var _this = this;
+      // 这个是固定写死的小程序码
       Object.assign(this.posterData,
       {
         url: 'https://img0.zuipin.cn/mp_zuipin/poster/hch-pro.jpg', //商品主图
@@ -74,6 +75,74 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         _this.deliveryFlag = false; //关闭分享弹窗
         _this.$refs.hchPoster.createCanvasImage(); //调用子组件的方法
       }, 500);
+      // 这个是固定写死的小程序码 end
+      // 以下是根据后端接口动态生成小程序码
+      // let code="https://img0.zuipin.cn/mp_zuipin/poster/hch-code.png";
+      // this.codeImg().then((res)=>{
+      // 	code = res;
+      // 	Object.assign(this.posterData,
+      // 	{
+      // 		url:'https://img0.zuipin.cn/mp_zuipin/poster/hch-pro.jpg',//商品主图
+      // 		icon:'https://img0.zuipin.cn/mp_zuipin/poster/hch-hyj.png',//醉品价图标
+      // 		title:"诗酒茶系列 武夷大红袍 2018年 花香型中火 一级 体验装 16g",//标题
+      // 		discountPrice:"250.00",//折后价格
+      // 		orignPrice:"300.00",//原价
+      // 		code:code,//小程序码
+      // 	})
+      // 	this.$forceUpdate();//强制渲染数据
+      // 	setTimeout(()=>{
+      // 		this.canvasFlag=false;//显示canvas海报
+      // 		this.deliveryFlag = false;//关闭分享弹窗
+      // 		this.$refs.hchPoster.createCanvasImage();//调用子组件的方法
+      // 	},500)
+      // })
+      // 以下是根据后端接口动态生成小程序码 end
+    },
+
+    // 获取海报的小程序码
+    codeImg: function codeImg() {var _this2 = this;
+      return new Promise(function (resolve, reject) {
+        wx.request({
+          method: 'get',
+          url: 'http://javaXXXXX', //自己java接口
+          header: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          data: {
+            scene: "sku=".concat(_this2.sku), //自己的参数
+            page: "pages/product/detail", //想要生成小程序码的页面地址
+            width: "128px" //小程序码大小
+          },
+          success: function success(res) {
+            if (res.data.code == 0) {
+              if (res.data.code == 0) {
+                var fsm = wx.getFileSystemManager();
+                var FILE_BASE_NAME = 'tmp_img_src';
+                var filePath = "".concat(wx.env.USER_DATA_PATH, "/").concat(FILE_BASE_NAME, ".jpg"); //图片临时地址
+                fsm.writeFile({
+                  filePath: filePath,
+                  data: res.data.data,
+                  encoding: 'binary',
+                  success: function success() {
+                    resolve(filePath);
+                  },
+                  fail: function fail() {
+                    this.canvasFlag = true;
+                    uni.showToast({ title: '海报生成失败', duration: 2000, icon: 'none' });
+                  } });
+
+              } else {
+                uni.showToast(_defineProperty({ title: res.data.message, icon: 'none', duration: 2000 }, "icon", 'none'));
+              }
+            } else {
+              _this2.canvasFlag = true;
+              uni.showToast({ title: '海报生成失败', duration: 2000, icon: 'none' });
+            }
+          },
+          fail: function fail(res) {
+            _this2.canvasFlag = true;
+            uni.showToast({ title: '海报生成失败', duration: 2000, icon: 'none' });
+          } });
+
+      });
     },
     // 分享弹窗
     shareEvn: function shareEvn() {
@@ -87,6 +156,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     canvasCancel: function canvasCancel(val) {
       this.canvasFlag = val;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

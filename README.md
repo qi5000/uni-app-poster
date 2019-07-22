@@ -1,4 +1,4 @@
-## 使用方法（主要看pages/hch-poster页面的例子）
+## 使用方法（主要看pages/hch-poster页面的例子里面有详细说明）
 
 ```
 <hchPoster ref="hchPoster" :canvasFlag.sync="canvasFlag" @cancel="canvasCancel" :posterObj.sync="posterData"/>
